@@ -28,3 +28,13 @@ jobs:
       - name: Git branch
         run: |
           git rev-parse --abbrev-ref HEAD
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: env | sort
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
